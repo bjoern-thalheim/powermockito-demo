@@ -7,6 +7,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import de.cellent.bt.test_demo.api.PowerDelegate;
+import de.cellent.bt.test_demo.impl.PowerWithDelegationToInterface;
 
 /**
  * Demo for verifying an interface with mockito.

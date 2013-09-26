@@ -6,6 +6,8 @@ import static org.mockito.Mockito.*;
 import org.junit.Before;
 import org.junit.Test;
 
+import de.cellent.bt.test_demo.impl.PowerWithDelegationToSuperclass;
+
 /**
  * Demo for mocking a delegation to an internal method of the class under test with mockito.
  * 

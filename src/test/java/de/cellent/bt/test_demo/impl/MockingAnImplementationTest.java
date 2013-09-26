@@ -6,6 +6,9 @@ import static org.mockito.Mockito.*;
 import org.junit.Before;
 import org.junit.Test;
 
+import de.cellent.bt.test_demo.impl.PowerDelegateImpl;
+import de.cellent.bt.test_demo.impl.PowerWithDelegationToImplementation;
+
 /**
  * Demo for mocking an implementation with mockito.
  * 
