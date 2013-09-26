@@ -18,7 +18,7 @@ import org.powermock.modules.junit4.PowerMockRunner;
  */
 @RunWith(PowerMockRunner.class)
 @PrepareForTest(PowerWithDelegationToPrivateMethod.class)
-public class VerifyPrivateMethodTest {
+public class VerifyPrivateMethodDelegationTest {
 
 	private PowerWithDelegationToPrivateMethod calculator;
 
