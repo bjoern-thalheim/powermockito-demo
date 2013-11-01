@@ -1,6 +1,7 @@
 package de.cellent.bt.test_demo.impl;
 
 import static org.junit.Assert.assertEquals;
+import static org.mockito.Mockito.times;
 import static org.powermock.api.mockito.PowerMockito.*;
 
 import org.junit.Before;
@@ -43,7 +44,7 @@ public class VerifyPrivateMethodDelegationTest {
 		// do assertion
 		assertEquals(base * base, power);
 		// verify with Powermock.
-		verifyPrivate(calculator).invoke("getPower");
+		verifyPrivate(calculator, times(1)).invoke("getPower");
 	}
 
 }
