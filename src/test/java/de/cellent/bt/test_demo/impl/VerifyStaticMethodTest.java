@@ -45,6 +45,7 @@ public class VerifyStaticMethodTest {
 		assertEquals(base * base, power);
 		// verify
 		verifyStatic();
+		StaticPowerDelegateImpl.getPower();
 	}
 
 }
