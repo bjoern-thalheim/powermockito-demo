@@ -42,15 +42,18 @@ public class MockNewObjectTest {
 	public void test() throws Exception {
 		int exponent = 2;
 		long base = 2;
+		// setup the Constructor call
 		whenNew(PowerDelegateImpl.class).withNoArguments().thenReturn(delegate);
+		// setup the call to the constructed object.
 		Mockito.doReturn(exponent).when(delegate).getPower();
 		// call method under test
 		long power = calculator.powerOf(base);
 		// do assertion
 		assertEquals(base * base, power);
-		// verify - very interesting! The order of this actually matters!.
+		// verifyNew - don't forget the .withNoArguments.
+		verifyNew(PowerDelegateImpl.class).withNoArguments();
+		// verify call
 		Mockito.verify(delegate, Mockito.times(1)).getPower();
-		verifyNew(PowerDelegateImpl.class);
 	}
 
 }
