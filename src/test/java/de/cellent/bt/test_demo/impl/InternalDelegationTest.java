@@ -30,12 +30,12 @@ public class InternalDelegationTest {
 	@Test
 	public void testPower2() {
 		// setup all necessary values.
-		int power = 2;
+		int exponent = 2;
 		long base = 2;
 		// mock
-		doReturn(power).when(calculator).getPower();
+		doReturn(exponent).when(calculator).getExponent();
 		// assert
-		assertEquals(base * base /* out */, calculator.powerOf(base /* in */));
+		assertEquals(base * base /* out */, calculator.power(base /* in */));
 	}
 
 }

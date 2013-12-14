@@ -17,7 +17,7 @@ import org.powermock.modules.junit4.PowerMockRunner;
  * 
  */
 @RunWith(PowerMockRunner.class)
-@PrepareForTest(StaticPowerDelegateImpl.class)
+@PrepareForTest(StaticExponentDelegateImpl.class)
 public class MockStaticMethodTest {
 
 	private PowerWithDelegationToStaticMethod calculator;
@@ -26,7 +26,7 @@ public class MockStaticMethodTest {
 	public void setup() {
 		// use PowerMockito.spy!
 		this.calculator = new PowerWithDelegationToStaticMethod();
-		mockStatic(StaticPowerDelegateImpl.class);
+		mockStatic(StaticExponentDelegateImpl.class);
 	}
 
 	/**
@@ -38,9 +38,9 @@ public class MockStaticMethodTest {
 		int exponent = 2;
 		long base = 2;
 		// spy private method.
-		doReturn(exponent).when(StaticPowerDelegateImpl.class, "getPower");
+		doReturn(exponent).when(StaticExponentDelegateImpl.class, "getExponent");
 		// call method under test
-		long power = calculator.powerOf(base);
+		long power = calculator.power(base);
 		// do assertion
 		assertEquals(base * base, power);
 	}

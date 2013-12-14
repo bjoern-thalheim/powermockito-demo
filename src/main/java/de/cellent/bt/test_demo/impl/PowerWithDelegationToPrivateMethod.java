@@ -2,8 +2,8 @@ package de.cellent.bt.test_demo.impl;
 
 public class PowerWithDelegationToPrivateMethod {
 
-	public long powerOf(long input) {
-		int power = getPower();
+	public long power(long input) {
+		int power = getExponent();
 		long result = 1;
 		for (int i = 0; i < power; i++) {
 			result *= input;
@@ -11,7 +11,7 @@ public class PowerWithDelegationToPrivateMethod {
 		return result;
 	}
 
-	private int getPower() {
+	private int getExponent() {
 		return 0;
 	}
 }

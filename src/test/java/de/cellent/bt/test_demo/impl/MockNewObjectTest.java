@@ -24,14 +24,14 @@ public class MockNewObjectTest {
 	private PowerWithDelegationToNewObject calculator;
 	
 	/** Mocked Delegate. */
-	private PowerDelegateImpl delegate;
+	private ExponentDelegateImpl delegate;
 
 	@Before
 	public void setup() {
 		// use PowerMockito.spy!
 		this.calculator = new PowerWithDelegationToNewObject();
 		// create mocked Delegate
-		delegate = Mockito.mock(PowerDelegateImpl.class);
+		delegate = Mockito.mock(ExponentDelegateImpl.class);
 	}
 
 	/**
@@ -43,17 +43,17 @@ public class MockNewObjectTest {
 		int exponent = 2;
 		long base = 2;
 		// setup the Constructor call
-		whenNew(PowerDelegateImpl.class).withNoArguments().thenReturn(delegate);
+		whenNew(ExponentDelegateImpl.class).withNoArguments().thenReturn(delegate);
 		// setup the call to the constructed object.
-		Mockito.doReturn(exponent).when(delegate).getPower();
+		Mockito.doReturn(exponent).when(delegate).getExponent();
 		// call method under test
 		long power = calculator.powerOf(base);
 		// do assertion
 		assertEquals(base * base, power);
 		// verifyNew - don't forget the .withNoArguments.
-		verifyNew(PowerDelegateImpl.class).withNoArguments();
+		verifyNew(ExponentDelegateImpl.class).withNoArguments();
 		// verify call
-		Mockito.verify(delegate, Mockito.times(1)).getPower();
+		Mockito.verify(delegate, Mockito.times(1)).getExponent();
 	}
 
 }

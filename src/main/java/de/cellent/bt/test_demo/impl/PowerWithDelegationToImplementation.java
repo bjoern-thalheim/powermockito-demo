@@ -2,14 +2,14 @@ package de.cellent.bt.test_demo.impl;
 
 public class PowerWithDelegationToImplementation {
 
-	private PowerDelegateImpl delegate;
+	private ExponentDelegateImpl delegate;
 
-	public void setPowerDelegate(PowerDelegateImpl delegate) {
+	public void setExponentDelegate(ExponentDelegateImpl delegate) {
 		this.delegate = delegate;
 	}
 
-	public long powerOf(long input) {
-		int power = delegate.getPower();
+	public long power(long input) {
+		int power = delegate.getExponent();
 		long result = 1;
 		for (int i = 0; i < power; i++) {
 			result *= input;

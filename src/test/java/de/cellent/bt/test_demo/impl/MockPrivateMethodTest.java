@@ -37,9 +37,9 @@ public class MockPrivateMethodTest {
 		int exponent = 2;
 		long base = 2;
 		// spy private method.
-		doReturn(exponent).when(calculator, "getPower");
+		doReturn(exponent).when(calculator, "getExponent");
 		// call method under test
-		long power = calculator.powerOf(base);
+		long power = calculator.power(base);
 		// do assertion
 		assertEquals(base * base, power);
 	}

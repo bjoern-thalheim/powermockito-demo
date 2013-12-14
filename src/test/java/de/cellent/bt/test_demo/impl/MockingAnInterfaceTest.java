@@ -6,7 +6,7 @@ import static org.mockito.Mockito.*;
 import org.junit.Before;
 import org.junit.Test;
 
-import de.cellent.bt.test_demo.api.PowerDelegate;
+import de.cellent.bt.test_demo.api.ExponentDelegate;
 import de.cellent.bt.test_demo.impl.PowerWithDelegationToInterface;
 
 /**
@@ -20,15 +20,15 @@ public class MockingAnInterfaceTest {
 	private PowerWithDelegationToInterface calculator;
 
 	/** mocked delegate */
-	private PowerDelegate delegate;
+	private ExponentDelegate delegate;
 
 	@Before
 	public void init() {
 		// instantate
 		this.calculator = new PowerWithDelegationToInterface();
 		// "inject"
-		this.delegate = mock(PowerDelegate.class);
-		calculator.setPowerDelegate(delegate);
+		this.delegate = mock(ExponentDelegate.class);
+		calculator.setExponentDelegate(delegate);
 	}
 
 	/**
@@ -37,12 +37,12 @@ public class MockingAnInterfaceTest {
 	@Test
 	public void testPower2() {
 		// setup all necessary values.
-		int power = 2;
+		int exponent = 2;
 		long base = 2;
 		// mock
-		doReturn(power).when(delegate).getPower();
+		doReturn(exponent).when(delegate).getExponent();
 		// assert
-		assertEquals(base * base /* out */, calculator.powerOf(base /* in */));
+		assertEquals(base * base /* out */, calculator.power(base /* in */));
 	}
 
 }
