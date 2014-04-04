@@ -24,13 +24,13 @@ public class SimpleTest {
 	
 	@Test
 	public void testCalculate() {
-		assertEquals(0, calculator.calculate(0));
-		assertEquals(1, calculator.calculate(1));
-		assertEquals(4, calculator.calculate(2));
-		assertEquals(289, calculator.calculate(17));
-		assertEquals(1, calculator.calculate(-1));
-		assertEquals(4, calculator.calculate(-2));
-		assertEquals(289, calculator.calculate(-17));
+		assertEquals(0, calculator.square(0));
+		assertEquals(1, calculator.square(1));
+		assertEquals(4, calculator.square(2));
+		assertEquals(289, calculator.square(17));
+		assertEquals(1, calculator.square(-1));
+		assertEquals(4, calculator.square(-2));
+		assertEquals(289, calculator.square(-17));
 	}
 
 }

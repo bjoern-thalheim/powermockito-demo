@@ -2,13 +2,13 @@ package de.cellent.bt.test_demo.impl;
 
 public class PowerWithDelegationToPrivateMethod {
 
-	public long power(long input) {
-		int power = getExponent();
-		long result = 1;
-		for (int i = 0; i < power; i++) {
-			result *= input;
+	public long power(long base) {
+		int exponent = getExponent();
+		long power = 1;
+		for (int i = 0; i < exponent; i++) {
+			power *= base;
 		}
-		return result;
+		return power;
 	}
 
 	private int getExponent() {

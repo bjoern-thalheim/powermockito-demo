@@ -47,7 +47,7 @@ public class MockNewObjectTest {
 		// setup the call to the constructed object.
 		Mockito.doReturn(exponent).when(delegate).getExponent();
 		// call method under test
-		long power = calculator.powerOf(base);
+		long power = calculator.power(base);
 		// do assertion
 		assertEquals(base * base, power);
 		// verifyNew - don't forget the .withNoArguments.

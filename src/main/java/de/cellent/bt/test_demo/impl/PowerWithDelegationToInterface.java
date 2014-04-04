@@ -10,12 +10,12 @@ public class PowerWithDelegationToInterface {
 		this.delegate = delegate;
 	}
 	
-	public long power(long input) {
-		int power = delegate.getExponent();
-		long result = 1;
-		for (int i = 0; i < power; i++) {
-			result *= input;
+	public long power(long base) {
+		int exponent = delegate.getExponent();
+		long power = 1;
+		for (int i = 0; i < exponent; i++) {
+			power *= base;
 		}
-		return result;
+		return power;
 	}
 }

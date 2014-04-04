@@ -2,12 +2,12 @@ package de.cellent.bt.test_demo.impl;
 
 public class PowerWithDelegationToStaticMethod {
 
-	public long power(long input) {
-		int power = StaticExponentDelegateImpl.getExponent();
-		long result = 1;
-		for (int i = 0; i < power; i++) {
-			result *= input;
+	public long power(long base) {
+		int exponent = StaticExponentDelegateImpl.getExponent();
+		long power = 1;
+		for (int i = 0; i < exponent; i++) {
+			power *= base;
 		}
-		return result;
+		return power;
 	}
 }
