@@ -10,11 +10,11 @@ import de.cellent.bt.test_demo.api.ExponentDelegate;
 import de.cellent.bt.test_demo.impl.PowerWithDelegationToInterface;
 
 /**
- * Demo for mocking an interface with mockito.
+ * Demo for verifying an interface with mockito.
  * 
  * @author bjoern
  */
-public class MockingAnInterfaceTest {
+public class E_VerificationTest {
 
 	/** class under test. */
 	private PowerWithDelegationToInterface calculator;
@@ -43,6 +43,8 @@ public class MockingAnInterfaceTest {
 		doReturn(exponent).when(delegate).getExponent();
 		// assert
 		assertEquals(base * base /* out */, calculator.power(base /* in */));
+		// verify
+		verify(delegate, never()).getExponent();
 	}
 
 }

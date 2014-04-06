@@ -13,14 +13,14 @@ import de.cellent.bt.test_demo.impl.PowerWithDelegationToSuperclass;
  * 
  * @author bjoern
  */
-public class InternalDelegationTest {
+public class D_InternalDelegationTest {
 
 	/** class under test. */
 	private PowerWithDelegationToSuperclass calculator;
 
 	@Before
 	public void init() {
-		// instantate
+		// instantiate
 		this.calculator = spy(new PowerWithDelegationToSuperclass());
 	}
 

@@ -1,6 +1,7 @@
 package de.cellent.bt.test_demo.impl;
 
 import static org.junit.Assert.assertEquals;
+import static org.mockito.Mockito.times;
 import static org.powermock.api.mockito.PowerMockito.*;
 
 import org.junit.Before;
@@ -17,16 +18,15 @@ import org.powermock.modules.junit4.PowerMockRunner;
  * 
  */
 @RunWith(PowerMockRunner.class)
-@PrepareForTest(StaticExponentDelegateImpl.class)
-public class MockStaticMethodTest {
+@PrepareForTest(PowerWithDelegationToPrivateMethod.class)
+public class I_VerifyPrivateMethodDelegationTest {
 
-	private PowerWithDelegationToStaticMethod calculator;
+	private PowerWithDelegationToPrivateMethod calculator;
 
 	@Before
 	public void setup() {
 		// use PowerMockito.spy!
-		this.calculator = new PowerWithDelegationToStaticMethod();
-		mockStatic(StaticExponentDelegateImpl.class);
+		this.calculator = spy(new PowerWithDelegationToPrivateMethod());
 	}
 
 	/**
@@ -38,11 +38,13 @@ public class MockStaticMethodTest {
 		int exponent = 2;
 		long base = 2;
 		// spy private method.
-		doReturn(exponent).when(StaticExponentDelegateImpl.class, "getExponent");
+		doReturn(exponent).when(calculator, "getExponent");
 		// call method under test
 		long power = calculator.power(base);
 		// do assertion
 		assertEquals(base * base, power);
+		// verify with Powermock.
+		verifyPrivate(calculator, times(1)).invoke("getExponent");
 	}
 
 }

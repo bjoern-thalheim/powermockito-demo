@@ -6,28 +6,28 @@ import static org.mockito.Mockito.*;
 import org.junit.Before;
 import org.junit.Test;
 
-import de.cellent.bt.test_demo.impl.ExponentDelegateImpl;
-import de.cellent.bt.test_demo.impl.PowerWithDelegationToImplementation;
+import de.cellent.bt.test_demo.api.ExponentDelegate;
+import de.cellent.bt.test_demo.impl.PowerWithDelegationToInterface;
 
 /**
- * Demo for mocking an implementation with mockito.
+ * Demo for mocking an interface with mockito.
  * 
  * @author bjoern
  */
-public class MockingAnImplementationTest {
+public class B_MockingAnInterfaceTest {
 
 	/** class under test. */
-	private PowerWithDelegationToImplementation calculator;
+	private PowerWithDelegationToInterface calculator;
 
 	/** mocked delegate */
-	private ExponentDelegateImpl delegate;
+	private ExponentDelegate delegate;
 
 	@Before
 	public void init() {
 		// instantate
-		this.calculator = new PowerWithDelegationToImplementation();
+		this.calculator = new PowerWithDelegationToInterface();
 		// "inject"
-		this.delegate = spy(new ExponentDelegateImpl());
+		this.delegate = mock(ExponentDelegate.class);
 		calculator.setExponentDelegate(delegate);
 	}
 

@@ -1,6 +1,7 @@
 package de.cellent.bt.test_demo.impl;
 
 import static org.junit.Assert.assertEquals;
+import org.mockito.Mockito;
 import static org.powermock.api.mockito.PowerMockito.*;
 
 import org.junit.Before;
@@ -17,16 +18,20 @@ import org.powermock.modules.junit4.PowerMockRunner;
  * 
  */
 @RunWith(PowerMockRunner.class)
-@PrepareForTest(StaticExponentDelegateImpl.class)
-public class VerifyStaticMethodTest {
+@PrepareForTest(PowerWithDelegationToNewObject.class)
+public class F_MockNewObjectTest {
 
-	private PowerWithDelegationToStaticMethod calculator;
+	private PowerWithDelegationToNewObject calculator;
+	
+	/** Mocked Delegate. */
+	private ExponentDelegateImpl delegate;
 
 	@Before
 	public void setup() {
 		// use PowerMockito.spy!
-		this.calculator = new PowerWithDelegationToStaticMethod();
-		mockStatic(StaticExponentDelegateImpl.class);
+		this.calculator = new PowerWithDelegationToNewObject();
+		// create mocked Delegate
+		delegate = Mockito.mock(ExponentDelegateImpl.class);
 	}
 
 	/**
@@ -37,15 +42,18 @@ public class VerifyStaticMethodTest {
 	public void test() throws Exception {
 		int exponent = 2;
 		long base = 2;
-		// spy private method.
-		doReturn(exponent).when(StaticExponentDelegateImpl.class, "getExponent");
+		// setup the Constructor call
+		whenNew(ExponentDelegateImpl.class).withNoArguments().thenReturn(delegate);
+		// setup the call to the constructed object.
+		Mockito.doReturn(exponent).when(delegate).getExponent();
 		// call method under test
 		long power = calculator.power(base);
 		// do assertion
 		assertEquals(base * base, power);
-		// verify
-		verifyStatic();
-		StaticExponentDelegateImpl.getExponent();
+		// verifyNew - don't forget the .withNoArguments.
+		verifyNew(ExponentDelegateImpl.class).withNoArguments();
+		// verify call
+		Mockito.verify(delegate, Mockito.times(1)).getExponent();
 	}
 
 }

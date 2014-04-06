@@ -12,7 +12,7 @@ import de.cellent.bt.test_demo.impl.SquareCalculator;
  * 
  * @author bjoern
  */
-public class SimpleTest {
+public class A_SimpleTest {
 
 	/** Class under Test. */
 	private SquareCalculator calculator;

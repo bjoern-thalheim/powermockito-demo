@@ -6,28 +6,28 @@ import static org.mockito.Mockito.*;
 import org.junit.Before;
 import org.junit.Test;
 
-import de.cellent.bt.test_demo.api.ExponentDelegate;
-import de.cellent.bt.test_demo.impl.PowerWithDelegationToInterface;
+import de.cellent.bt.test_demo.impl.ExponentDelegateImpl;
+import de.cellent.bt.test_demo.impl.PowerWithDelegationToImplementation;
 
 /**
- * Demo for verifying an interface with mockito.
+ * Demo for mocking an implementation with mockito.
  * 
  * @author bjoern
  */
-public class VerificationTest {
+public class C_MockingAnImplementationTest {
 
 	/** class under test. */
-	private PowerWithDelegationToInterface calculator;
+	private PowerWithDelegationToImplementation calculator;
 
 	/** mocked delegate */
-	private ExponentDelegate delegate;
+	private ExponentDelegateImpl delegate;
 
 	@Before
 	public void init() {
 		// instantate
-		this.calculator = new PowerWithDelegationToInterface();
+		this.calculator = new PowerWithDelegationToImplementation();
 		// "inject"
-		this.delegate = mock(ExponentDelegate.class);
+		this.delegate = spy(new ExponentDelegateImpl());
 		calculator.setExponentDelegate(delegate);
 	}
 
@@ -43,8 +43,6 @@ public class VerificationTest {
 		doReturn(exponent).when(delegate).getExponent();
 		// assert
 		assertEquals(base * base /* out */, calculator.power(base /* in */));
-		// verify
-		verify(delegate, times(1)).getExponent();
 	}
 
 }
