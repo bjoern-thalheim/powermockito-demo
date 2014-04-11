@@ -38,7 +38,7 @@ public class K_InvokePrivateTest {
 		doReturn(exponent).when(calculator).getExponent();
 		// assert
 		Long result = Whitebox.invokeMethod(calculator, "power", base);
-		assertEquals(new Long(4), result);
+		assertEquals(new Long((long) Math.pow(base, exponent)), result);
 	}
 
 }
