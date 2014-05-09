@@ -44,7 +44,7 @@ public class E_VerificationTest {
 		// assert
 		assertEquals(base * base /* out */, calculator.power(base /* in */));
 		// verify
-		verify(delegate, never()).getExponent();
+		verify(delegate).getExponent();
 	}
 
 }
